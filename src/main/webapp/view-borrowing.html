@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>View Borrowing Records</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: #f4f6f9;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background: linear-gradient(45deg, #28a745, #218838);
+      color: white;
+      font-weight: bold;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: #e8f5e9;
+    }
+
+    .btn-custom {
+      background-color: #218838;
+      color: white;
+      border: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #28a745;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+    }
+
+    .footer a {
+      color: #28a745;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <a class="navbar-brand" href="#"><i class="fas fa-book"></i> Library Admin Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="admin-desktop.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4"><i class="fas fa-history"></i> View Borrowing Records</h2>
+
+  <!-- Borrowing Records Table -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-table"></i> Borrowing Records
+    </div>
+    <div class="card-body">
+      <div class="form-group">
+        <input type="text" class="form-control" id="searchInput" placeholder="Search Records..." onkeyup="filterTable()">
+      </div>
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>User Name</th>
+          <th>Book Title</th>
+          <th>Borrow Date</th>
+          <th>Due Date</th>
+          <th>Return Date</th>
+          <th>Status</th>
+        </tr>
+        </thead>
+        <tbody id="borrowingRecordsTable">
+        <!-- Dynamic rows will be populated here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer text-center py-3 mt-5">
+  <div>
+    &copy; 2024 Library Management System. Built with <i class="fas fa-heart text-success"></i> by Team CAMP.
+    <br>
+    <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Mock data for borrowing records
+  const borrowingRecords = [
+    { id: 1, userName: "User 1", bookTitle: "The Great Gatsby", borrowDate: "2024-11-01", dueDate: "2024-11-15", returnDate: "2024-11-10", status: "Returned" },
+    { id: 2, userName: "User 2", bookTitle: "1984", borrowDate: "2024-11-03", dueDate: "2024-11-17", returnDate: null, status: "Pending" },
+    { id: 3, userName: "User 3", bookTitle: "To Kill a Mockingbird", borrowDate: "2024-11-05", dueDate: "2024-11-19", returnDate: null, status: "Pending" }
+  ];
+
+  // Populate Borrowing Records Table
+  function loadBorrowingRecords() {
+    const table = document.getElementById("borrowingRecordsTable");
+    table.innerHTML = "";
+    borrowingRecords.forEach((record, index) => {
+      const row = `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${record.userName}</td>
+          <td>${record.bookTitle}</td>
+          <td>${record.borrowDate}</td>
+          <td>${record.dueDate}</td>
+          <td>${record.returnDate ? record.returnDate : "Not Returned"}</td>
+          <td>
+            <span class="badge badge-${record.status === "Returned" ? "success" : "warning"}">${record.status}</span>
+          </td>
+        </tr>`;
+      table.innerHTML += row;
+    });
+  }
+
+  // Filter Table Function
+  function filterTable() {
+    const searchValue = document.getElementById("searchInput").value.toLowerCase();
+    const rows = document.querySelectorAll("#borrowingRecordsTable tr");
+    rows.forEach(row => {
+      const cells = row.querySelectorAll("td");
+      const rowText = Array.from(cells).map(cell => cell.textContent.toLowerCase()).join(" ");
+      row.style.display = rowText.includes(searchValue) ? "" : "none";
+    });
+  }
+
+  // Initial Load
+  loadBorrowingRecords();
+</script>
+</body>
+
+</html>

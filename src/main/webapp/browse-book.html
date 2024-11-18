@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Browse Books</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background: url('https://cdn.pixabay.com/photo/2016/03/09/09/17/books-1245690_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .container {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .btn-search {
+      background-color: #007bff;
+      color: white;
+      border-radius: 25px;
+    }
+
+    .btn-search:hover {
+      background-color: #0056b3;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .card {
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .card img {
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-title {
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .card-text {
+      font-size: 0.9rem;
+      color: #555;
+    }
+
+    .filter-section {
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+      position: fixed;
+      bottom : 0;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <a class="navbar-brand" href="#"><i class="fas fa-building"></i> Library User Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="admin-desktop.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Content -->
+<div class="container">
+  <h2 class="header-title"><i class="fas fa-book"></i> Browse Books</h2>
+
+  <!-- Search and Filter Section -->
+  <div class="filter-section">
+    <form id="filterForm" class="form-inline justify-content-center">
+      <input type="text" id="searchQuery" class="form-control mr-2" placeholder="Search by title, author, or keyword">
+      <select id="filterCategory" class="form-control mr-2">
+        <option value="">Category</option>
+        <option value="Fiction">Fiction</option>
+        <option value="Non-Fiction">Non-Fiction</option>
+        <option value="Science">Science</option>
+        <option value="History">History</option>
+      </select>
+      <select id="filterPublisher" class="form-control mr-2">
+        <option value="">Publisher</option>
+        <option value="Penguin">Penguin</option>
+        <option value="HarperCollins">HarperCollins</option>
+        <option value="Random House">Random House</option>
+      </select>
+      <button type="submit" class="btn btn-search"><i class="fas fa-search"></i> Search</button>
+    </form>
+  </div>
+
+  <!-- Book List -->
+  <div class="row" id="bookList">
+    <!-- Example Book Card -->
+    <div class="col-md-4">
+      <div class="card">
+        <img src="https://cdn.pixabay.com/photo/2015/09/05/22/46/reading-925589_1280.jpg" class="card-img-top" alt="Book Cover">
+        <div class="card-body">
+          <h5 class="card-title">Book Title</h5>
+          <p class="card-text">
+            <strong>Author:</strong> John Doe<br>
+            <strong>Publisher:</strong> Random House<br>
+            <strong>Category:</strong> Fiction<br>
+          </p>
+          <a href="#" class="btn btn-primary btn-sm">View Details</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Repeat similar book cards here -->
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer text-center py-3 mt-5">
+  <div>
+    &copy; 2024 Library Management System. Built with <i class="fas fa-heart text-success"></i> by Team CAMP.
+    <br>
+    <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<script>
+  // Example script for filtering books
+  const books = [
+    {
+      title: 'Book Title 1',
+      author: 'John Doe',
+      publisher: 'Random House',
+      category: 'Fiction',
+      cover: 'https://cdn.pixabay.com/photo/2015/09/05/22/46/reading-925589_1280.jpg',
+    },
+    {
+      title: 'Book Title 2',
+      author: 'Jane Smith',
+      publisher: 'Penguin',
+      category: 'Non-Fiction',
+      cover: 'https://cdn.pixabay.com/photo/2016/09/04/14/03/books-1642276_1280.jpg',
+    },
+  ];
+
+  const bookList = document.getElementById('bookList');
+  const filterForm = document.getElementById('filterForm');
+
+  const renderBooks = (filteredBooks) => {
+    bookList.innerHTML = '';
+    filteredBooks.forEach((book) => {
+      const bookCard = `
+        <div class="col-md-4">
+          <div class="card">
+            <img src="${book.cover}" class="card-img-top" alt="Book Cover">
+            <div class="card-body">
+              <h5 class="card-title">${book.title}</h5>
+              <p class="card-text">
+                <strong>Author:</strong> ${book.author}<br>
+                <strong>Publisher:</strong> ${book.publisher}<br>
+                <strong>Category:</strong> ${book.category}<br>
+              </p>
+              <a href="#" class="btn btn-primary btn-sm">View Details</a>
+            </div>
+          </div>
+        </div>
+      `;
+      bookList.innerHTML += bookCard;
+    });
+  };
+
+  filterForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    const query = document.getElementById('searchQuery').value.toLowerCase();
+    const category = document.getElementById('filterCategory').value;
+    const publisher = document.getElementById('filterPublisher').value;
+
+    const filteredBooks = books.filter((book) => {
+      return (
+        (book.title.toLowerCase().includes(query) || book.author.toLowerCase().includes(query)) &&
+        (!category || book.category === category) &&
+        (!publisher || book.publisher === publisher)
+      );
+    });
+
+    renderBooks(filteredBooks);
+  });
+
+  // Render all books on page load
+  renderBooks(books);
+</script>
+</body>
+
+</html>

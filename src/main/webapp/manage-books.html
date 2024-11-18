@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Books</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background: linear-gradient(45deg, #17a2b8, #0056b3);
+      color: white;
+      font-weight: bold;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .btn-custom {
+      background-color: #17a2b8;
+      color: white;
+      border: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #0056b3;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: #e3f2fd;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+    }
+
+    .footer a {
+      color: #17a2b8;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-info">
+  <a class="navbar-brand" href="#"><i class="fas fa-book"></i> Library Admin Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="admin-desktop.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4"><i class="fas fa-book-open"></i> Manage Books</h2>
+
+  <!-- Add Book Form -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <i class="fas fa-plus-circle"></i> Add New Book
+    </div>
+    <div class="card-body">
+      <form id="addBookForm">
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="bookTitle"><i class="fas fa-heading"></i> Title</label>
+            <input type="text" class="form-control" id="bookTitle" placeholder="Enter book title" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="bookAuthor"><i class="fas fa-user"></i> Author</label>
+            <input type="text" class="form-control" id="bookAuthor" placeholder="Enter author's name" required>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="bookCategory"><i class="fas fa-tags"></i> Category</label>
+            <input type="text" class="form-control" id="bookCategory" placeholder="Enter category" required>
+          </div>
+          <div class="form-group col-md-6">
+            <label for="bookStock"><i class="fas fa-boxes"></i> Stock</label>
+            <input type="number" class="form-control" id="bookStock" placeholder="Enter stock count" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="bookCover"><i class="fas fa-image"></i> Upload Book Cover</label>
+          <input type="file" class="form-control-file" id="bookCover" accept="image/*">
+        </div>
+        <button type="submit" class="btn btn-custom"><i class="fas fa-save"></i> Add Book</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Book Table -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-list-alt"></i> Books List
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Title</th>
+          <th>Author</th>
+          <th>Category</th>
+          <th>Stock</th>
+          <th>Cover</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="booksTable">
+        <!-- Dynamic rows go here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer text-center py-3 mt-5">
+  <div>
+    &copy; 2024 Library Management System. Built with <i class="fas fa-heart text-danger"></i> by Team CAMP.
+    <br>
+    <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Example: Mock Data for Books
+  const books = [
+    { id: 1, title: "Book One", author: "Author A", category: "Fiction", stock: 10, cover: "" },
+    { id: 2, title: "Book Two", author: "Author B", category: "Science", stock: 5, cover: "" }
+  ];
+
+  // Populate Books Table
+  function loadBooks() {
+    const booksTable = document.getElementById("booksTable");
+    booksTable.innerHTML = "";
+    books.forEach((book, index) => {
+      const row = `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${book.title}</td>
+          <td>${book.author}</td>
+          <td>${book.category}</td>
+          <td>${book.stock}</td>
+          <td><img src="${book.cover || "https://via.placeholder.com/50"}" alt="Book Cover" class="img-thumbnail" style="width: 50px;"></td>
+          <td>
+            <button class="btn btn-warning btn-sm" onclick="editBook(${book.id})"><i class="fas fa-edit"></i></button>
+            <button class="btn btn-danger btn-sm" onclick="deleteBook(${book.id})"><i class="fas fa-trash"></i></button>
+          </td>
+        </tr>`;
+      booksTable.innerHTML += row;
+    });
+  }
+
+  // Add Book Handler
+  document.getElementById("addBookForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    const newBook = {
+      id: books.length + 1,
+      title: document.getElementById("bookTitle").value,
+      author: document.getElementById("bookAuthor").value,
+      category: document.getElementById("bookCategory").value,
+      stock: document.getElementById("bookStock").value,
+      cover: document.getElementById("bookCover").files[0] ? URL.createObjectURL(document.getElementById("bookCover").files[0]) : ""
+    };
+    books.push(newBook);
+    loadBooks();
+    this.reset();
+  });
+
+  // Edit Book (placeholder function)
+  function editBook(bookId) {
+    alert(`Edit book with ID: ${bookId}`);
+  }
+
+  // Delete Book
+  function deleteBook(bookId) {
+    const index = books.findIndex(b => b.id === bookId);
+    if (index > -1) books.splice(index, 1);
+    loadBooks();
+  }
+
+  // Initial Load
+  loadBooks();
+</script>
+</body>
+
+</html>

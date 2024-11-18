@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    /* Body Styling */
+    body {
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/12/54/library-1866845_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
+      font-family: 'Arial', sans-serif;
+      color: #fff;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0;
+    }
+
+    /* Card Styling */
+    .login-card {
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      border-radius: 15px;
+      padding: 40px 30px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .login-card h3 {
+      font-size: 28px;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .login-card .btn-login {
+      background: #6a11cb;
+      color: white;
+      border: none;
+      transition: 0.3s;
+      border-radius: 25px;
+    }
+
+    .login-card .btn-login:hover {
+      background: #2575fc;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .login-card .form-control {
+      border-radius: 25px;
+      border: 1px solid #ccc;
+      padding-left: 20px;
+    }
+
+    .login-card .form-control:focus {
+      border-color: #6a11cb;
+      box-shadow: 0 0 5px rgba(106, 17, 203, 0.5);
+    }
+
+    .login-card .forgot-password {
+      display: block;
+      text-align: right;
+      font-size: 0.9em;
+      margin-top: -10px;
+      color: #6a11cb;
+      text-decoration: none;
+    }
+
+    .login-card .forgot-password:hover {
+      text-decoration: underline;
+    }
+
+    .error-msg {
+      color: red;
+      font-size: 0.85em;
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    /* Footer Style */
+    .login-footer {
+      text-align: center;
+      margin-top: 15px;
+      font-size: 0.85em;
+      color: #aaa;
+    }
+
+    .login-footer a {
+      color: #6a11cb;
+      text-decoration: none;
+    }
+
+    .login-footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Login Card -->
+<div class="login-card">
+  <h3><i class="fas fa-book"></i> Welcome to the Library</h3>
+  <form id="loginForm">
+    <div class="form-group">
+      <label for="username">Username</label>
+      <input type="text" id="username" class="form-control" placeholder="Enter your username" required>
+    </div>
+    <div class="form-group">
+      <label for="password">Password</label>
+      <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+    </div>
+    <a href="#" class="forgot-password">Forgot Password?</a>
+    <div class="error-msg" id="error-msg"></div>
+    <button type="submit" class="btn btn-login btn-block mt-4">Login</button>
+  </form>
+  <div class="login-footer">
+    Don't have an account? <a href="register.html">Register</a>
+  </div>
+</div>
+
+<!-- Scripts -->
+<script>
+  document.getElementById('loginForm').addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const username = document.getElementById('username').value;
+    const password = document.getElementById('password').value;
+    const errorMsg = document.getElementById('error-msg');
+
+    // Simulated login (replace with backend API integration)
+    const users = [
+      { username: 'admin', password: 'admin123', role: 'admin' },
+      { username: 'user', password: 'user123', role: 'user' }
+    ];
+
+    const user = users.find(u => u.username === username && u.password === password);
+
+    if (user) {
+      errorMsg.textContent = '';
+      if (user.role === 'admin') {
+        window.location.href = 'admin-desktop.html';
+      } else {
+        window.location.href = 'user-desktop.html';
+      }
+    } else {
+      errorMsg.textContent = 'Invalid username or password!';
+    }
+  });
+</script>
+</body>
+
+</html>

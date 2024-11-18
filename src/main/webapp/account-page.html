@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Account</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: #ffffff;
+      font-family: 'Arial', sans-serif;
+      height: 100%;
+    }
+
+    .container {
+      margin-top: 30px;
+      background: #ffffff;
+      color: #333333;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #0072ff;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(to right, #0072ff, #00c6ff);
+      border: none;
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      margin-top: auto;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    footer a {
+      color: #00c6ff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .nav-tabs .nav-link {
+      background: #f8f9fa;
+      border: none;
+      color: #0072ff;
+    }
+
+    .nav-tabs .nav-link.active {
+      background: #0072ff;
+      color: #ffffff;
+    }
+
+    .form-group label {
+      font-weight: bold;
+    }
+
+    .table {
+      margin-top: 20px;
+    }
+
+    .greeting-message {
+      font-size: 1.2rem;
+      color: #0072ff;
+    }
+
+    .role-badge {
+      font-size: 1rem;
+      font-weight: bold;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background: #0072ff;
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><i class="fas fa-book"></i> Library System</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="user-desktop.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Container -->
+<div class="container">
+  <h2 class="header-title"><i class="fas fa-user-circle"></i> My Account</h2>
+  <p class="greeting-message">Welcome back, <b>John Doe</b>! You are logged in as <span class="role-badge">Admin</span></p>
+
+  <!-- Tab Navigation -->
+  <ul class="nav nav-tabs" id="accountTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="profile-tab" data-toggle="tab" href="#profile" role="tab">Profile Info</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="activity-tab" data-toggle="tab" href="#activity" role="tab">Activity Logs</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="password-tab" data-toggle="tab" href="#password" role="tab">Change Password</a>
+    </li>
+  </ul>
+
+  <!-- Tab Content -->
+  <div class="tab-content" id="accountTabContent">
+    <!-- Profile Info -->
+    <div class="tab-pane fade show active" id="profile" role="tabpanel">
+      <form>
+        <div class="form-group">
+          <label for="name"><i class="fas fa-user"></i> Name</label>
+          <input type="text" class="form-control" id="name" value="John Doe">
+        </div>
+        <div class="form-group">
+          <label for="email"><i class="fas fa-envelope"></i> Email</label>
+          <input type="email" class="form-control" id="email" value="johndoe@example.com">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-save"></i> Save Changes</button>
+      </form>
+    </div>
+
+    <!-- Activity Logs -->
+    <div class="tab-pane fade" id="activity" role="tabpanel">
+      <h4>Recent Activities</h4>
+      <table class="table table-striped">
+        <thead>
+        <tr>
+          <th>#</th>
+          <th>Description</th>
+          <th>Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>1</td>
+          <td>Added a new book to the library.</td>
+          <td>2024-11-14</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Updated borrowing history for User123.</td>
+          <td>2024-11-13</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Change Password -->
+    <div class="tab-pane fade" id="password" role="tabpanel">
+      <form>
+        <div class="form-group">
+          <label for="currentPassword"><i class="fas fa-lock"></i> Current Password</label>
+          <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+        </div>
+        <div class="form-group">
+          <label for="newPassword"><i class="fas fa-key"></i> New Password</label>
+          <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-check-circle"></i> Change Password</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div>
+    &copy; 2024 Library Management System. Designed with <i class="fas fa-heart text-danger"></i> by Team CAMP.
+    <br>
+    <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<script>
+  // Simulated functionality for form submission
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Your changes have been saved successfully!');
+    });
+  });
+</script>
+</body>
+
+</html>

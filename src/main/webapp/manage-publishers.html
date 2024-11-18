@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Publishers</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background: linear-gradient(45deg, #28a745, #218838);
+      color: white;
+      font-weight: bold;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .btn-custom {
+      background-color: #218838;
+      color: white;
+      border: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #28a745;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: #e9f7ef;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+    }
+
+    .footer a {
+      color: #28a745;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <a class="navbar-brand" href="#"><i class="fas fa-building"></i> Library Admin Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="admin-desktop.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4"><i class="fas fa-building"></i> Manage Publishers</h2>
+
+  <!-- Publishers Table -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-list-alt"></i> Publisher List
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>Publisher Name</th>
+          <th>Contact</th>
+          <th>Address</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="publishersTable">
+        <!-- Dynamic rows will be populated here -->
+        </tbody>
+      </table>
+    </div>
+    <div class="card-footer text-right">
+      <button class="btn btn-custom" onclick="showAddPublisherForm()"><i class="fas fa-plus-circle"></i> Add Publisher</button>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer text-center py-3 mt-5">
+  <div>
+    &copy; 2024 Library Management System. Built with <i class="fas fa-heart text-success"></i> by Team CAMP.
+    <br>
+    <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Example: Mock Data for Publishers
+  const publishers = [
+    { id: 1, name: "Penguin Random House", contact: "123-456-7890", address: "New York, USA" },
+    { id: 2, name: "HarperCollins", contact: "987-654-3210", address: "London, UK" },
+    { id: 3, name: "Simon & Schuster", contact: "456-789-0123", address: "California, USA" }
+  ];
+
+  // Populate Publishers Table
+  function loadPublishers() {
+    const publishersTable = document.getElementById("publishersTable");
+    publishersTable.innerHTML = "";
+    publishers.forEach((publisher, index) => {
+      const row = `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${publisher.name}</td>
+          <td>${publisher.contact}</td>
+          <td>${publisher.address}</td>
+          <td>
+            <button class="btn btn-warning btn-sm" onclick="editPublisher(${publisher.id})"><i class="fas fa-edit"></i> Edit</button>
+            <button class="btn btn-danger btn-sm" onclick="deletePublisher(${publisher.id})"><i class="fas fa-trash-alt"></i> Delete</button>
+          </td>
+        </tr>`;
+      publishersTable.innerHTML += row;
+    });
+  }
+
+  // Add Publisher (placeholder functionality)
+  function showAddPublisherForm() {
+    alert("Add Publisher Form Displayed!");
+  }
+
+  // Edit Publisher (placeholder functionality)
+  function editPublisher(publisherId) {
+    const publisher = publishers.find(p => p.id === publisherId);
+    if (publisher) {
+      alert(`Editing Publisher: ${publisher.name}`);
+    }
+  }
+
+  // Delete Publisher
+  function deletePublisher(publisherId) {
+    const confirmDelete = confirm("Are you sure you want to delete this publisher?");
+    if (confirmDelete) {
+      const index = publishers.findIndex(p => p.id === publisherId);
+      if (index > -1) {
+        publishers.splice(index, 1);
+        loadPublishers();
+      }
+    }
+  }
+
+  // Initial Load
+  loadPublishers();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Return Books</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background: url('https://cdn.pixabay.com/photo/2016/11/29/12/54/books-1868068_1280.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #333;
+    }
+
+    .container {
+      margin-top: 20px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .header-title {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 28px;
+      font-weight: bold;
+      color: #007bff;
+    }
+
+    .table {
+      margin-top: 20px;
+    }
+
+    .table th {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .return-btn {
+      background-color: #28a745;
+      color: white;
+      border: none;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.9);
+      color: white;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-success">
+  <a class="navbar-brand" href="#"><i class="fas fa-building"></i> Library User Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="user-desktop.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Content -->
+<div class="container">
+  <h2 class="header-title"><i class="fas fa-book"></i> Return Borrowed Books</h2>
+  <p class="text-center">Select the books you want to return from the list below.</p>
+
+  <!-- Return Books Table -->
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Book Title</th>
+      <th>Author</th>
+      <th>Borrowed Date</th>
+      <th>Due Date</th>
+      <th>Action</th>
+    </tr>
+    </thead>
+    <tbody id="returnBooksList">
+    <!-- Dynamic rows will be added here -->
+    </tbody>
+  </table>
+</div>
+
+<!-- Footer -->
+<footer class="footer text-center py-3 mt-5">
+  <div>
+    &copy; 2024 Library Management System. Built with <i class="fas fa-heart text-success"></i> by Team CAMP.
+    <br>
+    <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<script>
+  // Example data for borrowed books
+  const borrowedBooks = [
+    {
+      id: 1,
+      title: "To Kill a Mockingbird",
+      author: "Harper Lee",
+      borrowedDate: "2024-11-01",
+      dueDate: "2024-11-15",
+    },
+    {
+      id: 2,
+      title: "1984",
+      author: "George Orwell",
+      borrowedDate: "2024-10-20",
+      dueDate: "2024-11-10",
+    },
+    {
+      id: 3,
+      title: "The Great Gatsby",
+      author: "F. Scott Fitzgerald",
+      borrowedDate: "2024-11-05",
+      dueDate: "2024-11-19",
+    },
+  ];
+
+  // Populate the table with borrowed books data
+  const returnBooksList = document.getElementById("returnBooksList");
+
+  borrowedBooks.forEach((book) => {
+    const row = `
+      <tr>
+        <td>${book.id}</td>
+        <td>${book.title}</td>
+        <td>${book.author}</td>
+        <td>${book.borrowedDate}</td>
+        <td>${book.dueDate}</td>
+        <td>
+          <button class="btn return-btn" onclick="returnBook(${book.id})">Return</button>
+        </td>
+      </tr>
+    `;
+    returnBooksList.innerHTML += row;
+  });
+
+  // Function to simulate book return
+  function returnBook(bookId) {
+    alert(`Book with ID ${bookId} has been marked for return.`);
+  }
+</script>
+</body>
+
+</html>

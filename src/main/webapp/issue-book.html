@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Issue Books</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background-color: #f8f9fa;
+    }
+
+    .card {
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      background: linear-gradient(45deg, #007bff, #0056b3);
+      color: white;
+      font-weight: bold;
+      border-radius: 12px 12px 0 0;
+    }
+
+    .btn-custom {
+      background-color: #0056b3;
+      color: white;
+      border: none;
+      transition: 0.3s ease;
+    }
+
+    .btn-custom:hover {
+      background-color: #007bff;
+    }
+
+    .table-hover tbody tr:hover {
+      background-color: #eef5ff;
+    }
+
+    .footer {
+      background-color: #343a40;
+      color: white;
+    }
+
+    .footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <a class="navbar-brand" href="#"><i class="fas fa-book"></i> Library Admin Panel</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="admin-desktop.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container mt-5">
+  <h2 class="text-center mb-4"><i class="fas fa-book"></i> Issue Books</h2>
+
+  <!-- Issue Books Form -->
+  <div class="card mb-4">
+    <div class="card-header">
+      <i class="fas fa-book-reader"></i> Assign Book to User
+    </div>
+    <div class="card-body">
+      <form id="issueBookForm">
+        <div class="form-group">
+          <label for="userSelect">Select User:</label>
+          <select class="form-control" id="userSelect">
+            <option value="">-- Select User --</option>
+            <!-- Dynamic user options -->
+            <option value="1">User 1 (user1@example.com)</option>
+            <option value="2">User 2 (user2@example.com)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="bookSelect">Select Book:</label>
+          <select class="form-control" id="bookSelect">
+            <option value="">-- Select Book --</option>
+            <!-- Dynamic book options -->
+            <option value="101">The Great Gatsby</option>
+            <option value="102">1984</option>
+            <option value="103">To Kill a Mockingbird</option>
+            <option value="104">Sex Education</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="dueDate">Due Date:</label>
+          <input type="date" class="form-control" id="dueDate" required>
+        </div>
+        <button type="submit" class="btn btn-custom btn-block"><i class="fas fa-share-square"></i> Issue Book</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Issued Books Table -->
+  <div class="card">
+    <div class="card-header">
+      <i class="fas fa-table"></i> Currently Issued Books
+    </div>
+    <div class="card-body">
+      <table class="table table-bordered table-hover">
+        <thead class="thead-dark">
+        <tr>
+          <th>#</th>
+          <th>User Name</th>
+          <th>Book Title</th>
+          <th>Issued Date</th>
+          <th>Due Date</th>
+          <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody id="issuedBooksTable">
+        <!-- Dynamic rows will be populated here -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="footer text-center py-3 mt-5">
+  <div>
+    &copy; 2024 Library Management System. Built with <i class="fas fa-heart text-primary"></i> by Team CAMP.
+    <br>
+    <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+  // Mock data for issued books
+  const issuedBooks = [
+    { id: 1, userName: "User 1", bookTitle: "The Great Gatsby", issuedDate: "2024-11-10", dueDate: "2024-11-20" },
+    { id: 2, userName: "User 2", bookTitle: "1984", issuedDate: "2024-11-12", dueDate: "2024-11-22" }
+  ];
+
+  // Populate Issued Books Table
+  function loadIssuedBooks() {
+    const table = document.getElementById("issuedBooksTable");
+    table.innerHTML = "";
+    issuedBooks.forEach((record, index) => {
+      const row = `
+        <tr>
+          <td>${index + 1}</td>
+          <td>${record.userName}</td>
+          <td>${record.bookTitle}</td>
+          <td>${record.issuedDate}</td>
+          <td>${record.dueDate}</td>
+          <td>
+            <button class="btn btn-danger btn-sm" onclick="returnBook(${record.id})"><i class="fas fa-undo"></i> Return</button>
+          </td>
+        </tr>`;
+      table.innerHTML += row;
+    });
+  }
+
+  // Return Book (placeholder functionality)
+  function returnBook(recordId) {
+    alert(`Returning book for record ID: ${recordId}`);
+  }
+
+  // Initial Load
+  loadIssuedBooks();
+</script>
+</body>
+
+</html>

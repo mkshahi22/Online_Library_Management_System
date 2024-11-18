@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Settings</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+          background: linear-gradient(to right, #4facfe, #00f2fe);
+          color: white;
+          font-family: Arial, sans-serif;
+        }
+
+        .container {
+          background: white;
+          color: #333333;
+          border-radius: 10px;
+          padding: 30px;
+          margin-top: 30px;
+          box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-title {
+          font-size: 2rem;
+          font-weight: bold;
+          text-align: center;
+          margin-bottom: 20px;
+          color: #0072ff;
+        }
+
+        .form-group label {
+          font-weight: bold;
+        }
+
+        .btn-primary {
+          background: linear-gradient(to right, #4facfe, #00f2fe);
+          border: none;
+        }
+
+        .btn-primary:hover {
+          background: linear-gradient(to right, #00f2fe, #4facfe);
+        }
+
+        footer {
+          background: #111111;
+          color: white;
+          padding: 10px 0;
+          text-align: center;
+          margin-top: 20px;
+        }
+
+        footer a {
+          color: #00f2fe;
+          text-decoration: none;
+        }
+
+        footer a:hover {
+          text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#"><i class="fas fa-cogs"></i> Admin Settings</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item"><a class="nav-link" href="admin-desktop.html">Dashboard</a></li>
+            <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+        </ul>
+    </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+    <h2 class="header-title"><i class="fas fa-cogs"></i> Settings</h2>
+    <form>
+        <h4>Account Settings</h4>
+        <div class="form-group">
+            <label for="currentPassword">Current Password</label>
+            <input type="password" class="form-control" id="currentPassword" placeholder="Enter current password">
+        </div>
+        <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" class="form-control" id="newPassword" placeholder="Enter new password">
+        </div>
+        <div class="form-group">
+            <label for="email">Update Email</label>
+            <input type="email" class="form-control" id="email" placeholder="Enter new email">
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Update Account</button>
+
+        <hr>
+        <h4>System Settings</h4>
+        <div class="form-group">
+            <label for="themeSelect">Choose Theme</label>
+            <select class="form-control" id="themeSelect">
+                <option>Default</option>
+                <option>Dark Mode</option>
+                <option>Light Mode</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="languageSelect">Preferred Language</label>
+            <select class="form-control" id="languageSelect">
+                <option>English</option>
+                <option>Spanish</option>
+                <option>French</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Save Settings</button>
+    </form>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div>
+        &copy; 2024 Library Management System. Designed with <i class="fas fa-heart text-danger"></i> by Team CAMP.
+        <br>
+        <a href="#">Privacy Policy</a> | <a href="#">Help</a>
+    </div>
+</footer>
+
+<script>
+    // Placeholder for form submission functionality
+    document.querySelector('form').addEventListener('submit', function (e) {
+      e.preventDefault();
+      alert('Settings updated successfully!');
+    });
+</script>
+</body>
+
+</html>

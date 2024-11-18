@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Manage Categories</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <style>
+    body {
+      background: linear-gradient(to right, #a1c4fd, #c2e9fb);
+      color: #333;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      background: white;
+      border-radius: 10px;
+      padding: 30px;
+      margin-top: 30px;
+      box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .header-title {
+      font-size: 2rem;
+      font-weight: bold;
+      text-align: center;
+      margin-bottom: 20px;
+      color: #007bff;
+    }
+
+    .table th, .table td {
+      vertical-align: middle !important;
+    }
+
+    .btn-primary {
+      background: linear-gradient(to right, #6a11cb, #2575fc);
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(to right, #2575fc, #6a11cb);
+    }
+
+    footer {
+      background: #111111;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+
+<body>
+<!-- Header -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#"><i class="fas fa-tags"></i> Manage Categories</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item"><a class="nav-link" href="admin-desktop.html">Dashboard</a></li>
+      <li class="nav-item"><a class="nav-link" href="/logout">Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Main Content -->
+<div class="container">
+  <h2 class="header-title"><i class="fas fa-tags"></i> Manage Categories</h2>
+  <form id="categoryForm">
+    <div class="form-group">
+      <label for="categoryName">Category Name</label>
+      <input type="text" class="form-control" id="categoryName" placeholder="Enter category name" required>
+    </div>
+    <button type="submit" class="btn btn-primary btn-block">Add Category</button>
+  </form>
+
+  <hr>
+  <h4>Category List</h4>
+  <table class="table table-bordered table-striped">
+    <thead class="thead-dark">
+    <tr>
+      <th>#</th>
+      <th>Category Name</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody id="categoryTable">
+    <!-- Example Data -->
+    <tr>
+      <td>1</td>
+      <td>Science Fiction</td>
+      <td>
+        <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</button>
+        <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+      </td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>History</td>
+      <td>
+        <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</button>
+        <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- Footer -->
+<footer>
+  <div>
+    &copy; 2024 Library Management System. Designed with <i class="fas fa-heart text-danger"></i> by Team CAMP.
+    <br>
+    <a href="#">Privacy Policy</a> | <a href="#">Contact Us</a>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('categoryForm').addEventListener('submit', function (e) {
+    e.preventDefault();
+    const categoryName = document.getElementById('categoryName').value.trim();
+    if (categoryName) {
+      const table = document.getElementById('categoryTable');
+      const newRow = table.insertRow();
+      const cell1 = newRow.insertCell(0);
+      const cell2 = newRow.insertCell(1);
+      const cell3 = newRow.insertCell(2);
+
+      cell1.textContent = table.rows.length;
+      cell2.textContent = categoryName;
+      cell3.innerHTML = `
+        <button class="btn btn-sm btn-warning"><i class="fas fa-edit"></i> Edit</button>
+        <button class="btn btn-sm btn-danger"><i class="fas fa-trash-alt"></i> Delete</button>
+      `;
+
+      document.getElementById('categoryName').value = '';
+      alert('Category added successfully!');
+    } else {
+      alert('Please enter a category name!');
+    }
+  });
+</script>
+</body>
+
+</html>

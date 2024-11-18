@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Library Management System</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    /* Hero Section Styling */
+    .hero {
+      background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://source.unsplash.com/1600x900/?library,books') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: bold;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      margin: 20px 0;
+    }
+
+    .hero a {
+      font-size: 1.2rem;
+      padding: 10px 20px;
+      color: white;
+      background: #007bff;
+      border: none;
+      border-radius: 5px;
+      text-decoration: none;
+    }
+
+    /* Card Section */
+    .features .card {
+      transition: transform 0.2s ease-in-out;
+    }
+
+    .features .card:hover {
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      background-color: #343a40;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    footer a {
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="navbar navbar-expand-lg navbar-light bg-info">
+  <a class="navbar-brand text-white" href="#"><i class="fas fa-book"></i> Library Management</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/register">Register</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link text-white" href="/contact-us">Contact Us</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<div class="hero">
+  <h1>Welcome to the Library Management System</h1>
+  <p>Your gateway to a world of knowledge and efficient library management.</p>
+  <a href="/login">Get Started</a>
+</div>
+
+<!-- Features Section -->
+<div class="container my-5 features">
+  <div class="text-center mb-4">
+    <h2>What We Offer</h2>
+    <p>Explore our features and manage your library effortlessly.</p>
+  </div>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-book fa-3x mb-3 text-info"></i>
+          <h5 class="card-title">Browse Books</h5>
+          <p class="card-text">Explore our vast collection of books and resources.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-user fa-3x mb-3 text-info"></i>
+          <h5 class="card-title">Manage Members</h5>
+          <p class="card-text">Easily manage member accounts and borrowing history.</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-center">
+        <div class="card-body">
+          <i class="fas fa-chart-line fa-3x mb-3 text-info"></i>
+          <h5 class="card-title">Track Inventory</h5>
+          <p class="card-text">Keep track of book availability and inventory updates.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2024 Online Library Management System. CMPS Team. All Rights Reserved. | <a href="#">Privacy Policy</a></p>
+</footer>
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</body>
+</html>
