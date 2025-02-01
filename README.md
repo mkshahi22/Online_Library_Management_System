@@ -136,9 +136,20 @@ For queries or suggestions, reach out to:
 
 ## 📸 Screenshots (To Be Added)
 ✅ Login Page  
+![image](https://github.com/user-attachments/assets/09bb0e12-4735-4652-b8de-c6e16be9b668)
+
 ✅ Admin Dashboard  
+![image](https://github.com/user-attachments/assets/5e4bada0-394d-4735-b050-6c300b9ed74d)
+
+✅ User Dashboard  
+![image](https://github.com/user-attachments/assets/0569e24b-4d47-4133-a45f-e2ea6f69d269)
+
 ✅ Book Search & Borrowing  
-✅ Member Profile Page  
+![image](https://github.com/user-attachments/assets/fe89281e-acb5-4ac2-a4a3-4a11485b784a)
+
+✅ Notifications  
+![image](https://github.com/user-attachments/assets/67b9856f-1bb7-4018-878b-8961d5726ac1)
+
 
 ---
 
