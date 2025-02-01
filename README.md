@@ -58,8 +58,6 @@ The **Online Library Management System** is a web-based platform designed to aut
    ```
 2. Import the project into your IDE (IntelliJ IDEA, Eclipse, or NetBeans).
 3. Configure the MySQL database:
-   - Create a database using the provided `library_management.sql` script.
-   - Update database credentials in the configuration file.
 4. Deploy the project on Apache Tomcat.
 5. Run the application and access it via a web browser.
 
