@@ -113,10 +113,10 @@ Online-Library-Management-System/
 ---
 
 ## 👥 Contributors
-- **Mayank Kumar** - [GitHub](https://github.com/mkshahi22)
+- **Mitthu Kumar** - [GitHub](https://github.com/mkshahi22)
 - **Chirag Gupta** - [GitHub](https://github.com/CODERXGUPTA)
-- **Pritam Kumar** - [GitHub](#)
-- **Shashi Kumar** - [GitHub](#)
+- **Pritam Kumar** - [GitHub]()
+- **Shashi Kumar** - [GitHub]()
 
 ---
 
@@ -131,7 +131,7 @@ Online-Library-Management-System/
 ## 📞 Contact
 For queries or suggestions, reach out to:
 
-📛 **Name:** Mayank Kumar (Project Lead)   
+📛 **Name:** Mitthu Kumar (Project Lead)   
 🔗 **GitHub:** [mkshahi22](https://github.com/mkshahi22)
 
 ---
