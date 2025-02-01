@@ -89,8 +89,8 @@ The **Online Library Management System** is a web-based platform designed to aut
 ## 🏗️ System Architecture
 
 ### 🛠 Flowchart:
-[Add a link or image of the flowchart here]
-"C:\Users\mithu\OneDrive\Pictures\Pictures\Screenshots\Screenshot 2025-02-01 231251.png"
+![image](https://github.com/user-attachments/assets/92f57923-a3c6-4d1e-9ffe-3d33ee508951)
+
 ---
 
 ## 📂 Project Directory Structure
