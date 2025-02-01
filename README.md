@@ -117,23 +117,6 @@ Online-Library-Management-System/
 - **Shashi Kumar** - [GitHub]()
 
 ---
-
-## 🚀 Future Enhancements
-- 📧 Implement email notifications for due books and reminders.
-- 🔍 Advanced search filters for books (genre, availability, author).
-- 📱 Mobile application for better accessibility.
-- 🔖 Integration with barcode scanning for book check-in/check-out.
-
----
-
-## 📞 Contact
-For queries or suggestions, reach out to:
-
-📛 **Name:** Mitthu Kumar (Project Lead)   
-🔗 **GitHub:** [mkshahi22](https://github.com/mkshahi22)
-
----
-
 ## 📸 Screenshots (To Be Added)
 ✅ Login Page  
 ![image](https://github.com/user-attachments/assets/09bb0e12-4735-4652-b8de-c6e16be9b668)
@@ -151,6 +134,13 @@ For queries or suggestions, reach out to:
 ![image](https://github.com/user-attachments/assets/67b9856f-1bb7-4018-878b-8961d5726ac1)
 
 
+
 ---
+
+## 📞 Contact
+For queries or suggestions, reach out to:
+
+📛 **Name:** Mitthu Kumar (Project Lead)   
+🔗 **GitHub:** [mkshahi22](https://github.com/mkshahi22)
 
 🎉 **Thank you for exploring the Online Library Management System! 😊📚**
